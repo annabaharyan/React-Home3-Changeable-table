@@ -1,0 +1,64 @@
+table{
+  width: 90%;
+}
+table,tr,td,th{
+  border:3px solid rgb(250, 249, 249);
+  border-collapse: collapse;
+  padding: 10px;
+  
+  color:antiquewhite
+}
+form{
+  width: 90%;
+  margin: 50px auto 0;
+  color:antiquewhite;
+  display: flex;
+  column-gap: 10px;
+  justify-content: space-between;
+  background-color: rgb(207, 180, 232);
+  padding: 10px;
+}
+form input{
+  width: 20%;
+  border:1px solid blueviolet;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: antiquewhite;
+  margin-right: 2px;
+}
+td input{
+  padding: 10px;
+  border-radius: 5px;
+  border:1px solid blueviolet;
+}
+input::placeholder{
+  color: blueviolet;
+}
+table{
+  margin: 20px auto;
+}
+tr{
+  background-color: rgb(207, 180, 232);
+}
+button{
+  background-color: antiquewhite;
+  border:3px groove rgb(211, 179, 240);
+  color: blueviolet;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 150px;
+  width: 100%;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  
+}
+h1{
+  color:blueviolet;
+  text-align: center;
+}
+.addCont{
+  margin: 0 auto;
+}

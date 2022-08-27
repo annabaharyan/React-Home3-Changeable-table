@@ -48,8 +48,12 @@ function App() {
         email:e.target[2].value,
         state:false
       }
+      
    ])
- 
+
+        e.target[0].value="";
+        e.target[1].value="";
+        e.target[2].value=""
   }
   const delUser=(id)=>{
     let newUsers=users.filter(user=>user.id!==+id);
@@ -71,6 +75,7 @@ let editUser=users.map(user=>{
 }
 const [updateName, setUpdateName]=useState("")
 const getInputValue=(e)=>{
+  
   setUpdateName(e.target.value)
 }
 
@@ -145,19 +150,19 @@ const updateUserEmail=(id)=>{
       <td>{user.id} </td>
       <td><span style={{display: user.state?"none":"block"}}>{user.fullname}</span>
       <input type="text"
-        defaultValue={user.fullname} 
+        value={user.fullname}
         style={{display: user.state?"block":"none"}}
         onChange={(e)=>getInputValue(e)}/>
       </td>
       <td><span style={{display: user.state?"none":"block"}}>{user.phone}</span>
       <input type="text"
-         defaultValue={user.phone} 
+        value={user.phone} 
         style={{display: user.state?"block":"none"}}
         onChange={(e)=>getInputValue2(e)}
        /></td>
       <td><span style={{display: user.state?"none":"block"}}>{user.email}</span>
-      <input type="text" 
-         defaultValue={user.email} 
+      <input type="email" 
+        value={user.email} 
         style={{display: user.state?"block":"none"}}
         onChange={(e)=>getInputValue3(e)}
       /></td>

@@ -59,11 +59,16 @@ function App() {
     let newUsers=users.filter(user=>user.id!==+id);
     setUsers(newUsers)
   }
-
+  const [updateName, setUpdateName]=useState("")
+  const [updatePhone, setUpdatePhone]=useState("")
+  const [updateEmail, setUpdateEmail]=useState("")
 const   editUser=(id)=>{
 let editUser=users.map(user=>{
-  if(user.id===id){
 
+  if(user.id===id){
+    setUpdateName(user.fullname)
+    setUpdatePhone(user.phone)
+    setUpdateEmail(user.email)
     user.state=true
   }else{
     user.state=false
@@ -73,55 +78,13 @@ let editUser=users.map(user=>{
  )
  setUsers(editUser)
 }
-const [updateName, setUpdateName]=useState("")
-const getInputValue=(e)=>{
-  
-  setUpdateName(e.target.value)
-}
-
-const updateUserName=(id)=>{
+const updateUser=(id)=>{
   let updateUser=users.map(user=>{
     if(user.id===id){
       user.state=false
       user.fullname=updateName;
-    }else{
-      user.state=false
-    }
-    return user
-    }
-   )
-   setUsers(updateUser)
-
-}
-const [updatePhone, setUpdatePhone]=useState("")
-const getInputValue2=(e)=>{
-  setUpdatePhone(e.target.value)
-}
-
-const updateUserPhone=(id)=>{
-  let updateUser=users.map(user=>{
-    if(user.id===id){
-      user.state=false
-      user.phone=updatePhone;
-    }else{
-      user.state=false
-    }
-    return user
-    }
-   )
-   setUsers(updateUser)
-
-}
-const [updateEmail, setUpdateEmail]=useState("")
-const getInputValue3=(e)=>{
-  setUpdateEmail(e.target.value)
-}
-
-const updateUserEmail=(id)=>{
-  let updateUser=users.map(user=>{
-    if(user.id===id){
-      user.state=false
       user.email=updateEmail;
+      user.phone=updatePhone;
     }else{
       user.state=false
     }
@@ -150,21 +113,27 @@ const updateUserEmail=(id)=>{
       <td>{user.id} </td>
       <td><span style={{display: user.state?"none":"block"}}>{user.fullname}</span>
       <input type="text"
-        value={user.fullname}
+        value={updateName}
         style={{display: user.state?"block":"none"}}
-        onChange={(e)=>getInputValue(e)}/>
+        onChange={(e)=>{
+setUpdateName(e.target.value)
+        }}/>
       </td>
       <td><span style={{display: user.state?"none":"block"}}>{user.phone}</span>
       <input type="text"
-        value={user.phone} 
+        value={updatePhone} 
         style={{display: user.state?"block":"none"}}
-        onChange={(e)=>getInputValue2(e)}
+        onChange={(e)=>{
+setUpdatePhone(e.target.value)
+        }}
        /></td>
       <td><span style={{display: user.state?"none":"block"}}>{user.email}</span>
       <input type="email" 
-        value={user.email} 
+        value={updateEmail} 
         style={{display: user.state?"block":"none"}}
-        onChange={(e)=>getInputValue3(e)}
+        onChange={(e)=>{
+setUpdateEmail(e.target.value)
+        }}
       /></td>
       <td>
       <button onClick={()=>delUser(`${user.id}`)}>Delete</button>
@@ -172,9 +141,8 @@ const updateUserEmail=(id)=>{
       <td>
         <button type="button"onClick={()=>editUser(user.id)}style={{display: user.state?"none":"block"}}>Edit</button>
         <button type="button"onClick={()=>{
-         updateUserName(user.id);
-         updateUserPhone(user.id)
-         updateUserEmail(user.id)
+         updateUser(user.id);
+     
         }
           
           }
